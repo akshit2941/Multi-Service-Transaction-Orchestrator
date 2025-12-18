@@ -1,6 +1,7 @@
 package com.subscription.billing_service.entity;
 
 
+import com.subscription.billing_service.enums.SubscriptionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,7 +37,7 @@ public class Subscription {
     private String currency;
 
     @Column(name = "status", length = 20)
-    private String status;
+    private SubscriptionStatus status;
     // ACTIVE, CANCELLED, SUSPENDED
 
     @Column(name = "next_billing_at")
