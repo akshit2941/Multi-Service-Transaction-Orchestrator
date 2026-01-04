@@ -5,16 +5,18 @@ import com.subscription.orchestrator_service.entity.Workflow;
 import com.subscription.orchestrator_service.kafka.TaskEventProducer;
 import com.subscription.orchestrator_service.repository.TaskRepository;
 import com.subscription.orchestrator_service.repository.WorkflowRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class BillingOrchestratorService {
 
-    private WorkflowRepository workflowRepository;
-    private TaskRepository taskRepository;
-    private TaskEventProducer taskEventProducer;
+    private final WorkflowRepository workflowRepository;
+    private final TaskRepository taskRepository;
+    private final TaskEventProducer taskEventProducer;
 
 
     public void startBillingWorkflow(UUID subscriptionId){

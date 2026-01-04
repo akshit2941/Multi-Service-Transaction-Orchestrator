@@ -16,8 +16,8 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class SubscriptionServiceImpl implements ISubscriptionService {
 
-    private ISubscriptionRepositoryService subscriptionRepositoryService;
-    private BillingEventProducer billingEventProducer;
+    private final ISubscriptionRepositoryService subscriptionRepositoryService;
+    private final BillingEventProducer billingEventProducer;
 
     @Override
     public void createSubscription(SubscriptionRequest request) {
