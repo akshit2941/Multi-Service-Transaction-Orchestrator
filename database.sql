@@ -2,7 +2,7 @@ CREATE TABLE subscriptions
 (
     id              UUID PRIMARY KEY,
 
-    user_id         UUID      not null,
+    user_id         UUID,
     plan_id         VARCHAR(100),
 
     amount          DECIMAL(10, 2),
