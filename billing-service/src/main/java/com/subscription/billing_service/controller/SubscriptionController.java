@@ -3,6 +3,7 @@ package com.subscription.billing_service.controller;
 import com.subscription.billing_service.dto.request.SubscriptionRequest;
 import com.subscription.billing_service.dto.response.ApiResponse;
 import com.subscription.billing_service.service.ISubscriptionService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/subscriptions")
+@RequiredArgsConstructor
 public class SubscriptionController {
 
-    private ISubscriptionService subscriptionService;
+    private final ISubscriptionService subscriptionService;
 
     @PostMapping
     public ResponseEntity<ApiResponse<Void>> createSubscription(@RequestBody SubscriptionRequest request){

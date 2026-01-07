@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SubscriptionRepositoryServiceImpl implements ISubscriptionRepositoryService {
 
-    private SubscriptionRepository subscriptionRepository;
+    private final SubscriptionRepository subscriptionRepository;
 
     @Override
     public Subscription save(Subscription subscription){

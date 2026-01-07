@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -21,6 +23,7 @@ import java.util.UUID;
 public class Subscription {
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     private UUID id;
 
@@ -36,6 +39,7 @@ public class Subscription {
     @Column(name = "currency", length = 3)
     private String currency;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20)
     private SubscriptionStatus status;
     // ACTIVE, CANCELLED, SUSPENDED
@@ -43,21 +47,12 @@ public class Subscription {
     @Column(name = "next_billing_at")
     private LocalDateTime nextBillingAt;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    @PrePersist
-    protected void onCreate() {
-        LocalDateTime now = LocalDateTime.now();
-        this.createdAt = now;
-        this.updatedAt = now;
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
-    }
 }
